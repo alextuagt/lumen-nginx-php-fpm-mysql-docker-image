@@ -6,7 +6,7 @@ services:
     ports:
       - 9000:9000
     volumes:
-      - app_data:/var/www/html/app
+      - ./app:/var/www/html/app
     restart: always
     environment:
       APP_ENV:
@@ -23,7 +23,8 @@ services:
       DB_PASSWORD:
       CACHE_DRIVER:
       QUEUE_DRIVER:      
-    network: backend
+    networks:
+      - backend
     links:
       - db
 
@@ -33,11 +34,12 @@ services:
     ports:
       - 8080:80
     volumes:
-      - app_data:/var/www/html/app
+      - ./app:/var/www/html/app
     restart: always       
     links:
       - php-fpm
-    network: backend
+    networks:
+      - backend
 
 
   db:
@@ -52,12 +54,13 @@ services:
       MYSQL_USER: 
       MYSQL_PASSWORD: 
       MYSQL_ROOT_PASSWORD:
-    network: backend
+    networks:
+      - backend
 
 
 volumes:
   db_data:
-  app_data: ./app
+#  app_data: ./app
 
 networks:
   backend:
