@@ -18,6 +18,14 @@ RUN set -ex \
     && sed -i -e "s/pm.max_spare_servers\s*=[^\n]*/pm.max_spare_servers = 17/g" /usr/local/etc/php-fpm.d/www.conf \
 && php-fpm --test
 
+
+
+
+
+
+
+
+
 EXPOSE 9000
 CMD ["php-fpm", "-F"]
     

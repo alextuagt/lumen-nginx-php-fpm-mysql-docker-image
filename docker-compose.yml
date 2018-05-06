@@ -6,7 +6,7 @@ services:
     ports:
       - 9000:9000
     volumes:
-      - app_data:/var/www/html/
+      - app_data:/var/www/html/app
     restart: always
     environment:
       APP_ENV:
@@ -33,7 +33,7 @@ services:
     ports:
       - 8080:80
     volumes:
-      - app_data:/var/www/html/ 
+      - app_data:/var/www/html/app
     restart: always       
     links:
       - php-fpm
