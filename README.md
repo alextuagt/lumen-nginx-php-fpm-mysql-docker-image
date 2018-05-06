@@ -22,5 +22,7 @@ An easy way to setup your lumen|laravel application using Docker and docker-comp
 ~~~
 ## Usage
 clone this repository on your local or remote server, and follow below :
-- edit `docker-compose.yml` 
+`docker-compose.yml` contains all your configurations you need. 
+- 
+
 
