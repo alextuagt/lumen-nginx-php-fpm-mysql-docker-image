@@ -19,15 +19,8 @@ RUN set -ex \
 && php-fpm --test
 
 
-
-
-
-
-
-
-
 EXPOSE 9000
-CMD ["php-fpm", "-F"]
-    
+
+
 
 

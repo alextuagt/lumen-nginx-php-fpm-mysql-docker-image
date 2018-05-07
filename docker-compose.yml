@@ -6,7 +6,7 @@ services:
     ports:
       - 9000:9000
     volumes:
-      - ./app:/var/www/html/app
+      - ./app:/var/www/html/app/
     restart: always
     environment:
       APP_ENV:
@@ -34,7 +34,7 @@ services:
     ports:
       - 8080:80
     volumes:
-      - ./app:/var/www/html/app
+      - ./app:/var/www/html/app/
     restart: always       
     links:
       - php-fpm
@@ -45,22 +45,23 @@ services:
   db:
     image: mysql:5.7
     ports:
-      - 3306:3306
+      - 3307:3306
     volumes:
       - db_data:/var/lib/mysql
     restart: always
     environment:
-      MYSQL_DATABASE: 
-      MYSQL_USER: 
-      MYSQL_PASSWORD: 
+      MYSQL_DATABASE:
+      MYSQL_USER:
+      MYSQL_HOST:
+      MYSQL_PASSWORD:
       MYSQL_ROOT_PASSWORD:
+      MYSQL_ROOT_HOST: localhost
     networks:
       - backend
 
 
 volumes:
   db_data:
-#  app_data: ./app
 
 networks:
   backend:

@@ -1,4 +1,4 @@
-FROM nginx
+FROM nginx as bbb
 
 MAINTAINER Jabar Asadi <asadi.jabar@outlook.com>
 
@@ -14,18 +14,18 @@ RUN mkdir /etc/nginx/sites-available/
 RUN mkdir /etc/nginx/sites-enabled/
 
 COPY  app.conf /etc/nginx/sites-available/
+#COPY  app.conf /etc/nginx/conf.d/
 
 # create smylink
 RUN ln -fs /etc/nginx/sites-available/app.conf /etc/nginx/sites-enabled/app.conf
 
 # remove default site
-RUN rm /etc/nginx/sites-enabled/default
+#RUN rm /etc/nginx/sites-enabled/default
+RUN rm /etc/nginx/conf.d/default.conf
 
-RUN echo "upstream php-upstream { server php-fpm:9000; }" > /etc/nginx/conf.d/upstream.conf
 
+#RUN usermod -u 1000 www-data
 
-RUN usermod -u 1000 www-data
-
-CMD ["nginx"]
+#CMD ["nginx"]
 
 EXPOSE 80 443 22 8080
