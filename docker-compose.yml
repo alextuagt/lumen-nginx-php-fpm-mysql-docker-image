@@ -28,7 +28,6 @@ services:
     links:
       - db
 
-
   nginx:
     build: nginx
     ports:
@@ -43,27 +42,24 @@ services:
 
 
   db:
-    image: mysql:5.7
-    ports:
-      - 3307:3306
-    volumes:
-      - db_data:/var/lib/mysql
+    image: postgres
     restart: always
     environment:
-      MYSQL_DATABASE:
-      MYSQL_USER:
-      MYSQL_HOST:
-      MYSQL_PASSWORD:
-      MYSQL_ROOT_PASSWORD:
-      MYSQL_ROOT_HOST: localhost
+      POSTGRES_PASSWORD: docker_user123
+      POSTGRES_USER: postgres
+      POSTGRES_DB: genesis
+    ports:
+      - '5432:5432'
+    volumes:
+      - pg-data:/var/lib/postgresql/data
     networks:
       - backend
 
-
 volumes:
-  db_data:
+  pg-data:
 
 networks:
   backend:
     driver: bridge
  
+
